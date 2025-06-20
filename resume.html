@@ -2,12 +2,34 @@
 <html>
     <head>
         <title>Resume</title>
+        <style>
+            #main-title{
+    color:blue
+}
+h2{
+    color: green
+}
+.note{
+    color:rgb(66, 137, 187)
+}
+.box{
+    width: 400px;
+    margin:200px;
+    border:5px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    background-image:linear-gradient(45deg, rgb(172, 189, 115), rgb(85, 42, 131));
+    background-color: #2d6297;
+
+}
+</style>
         <body>
             <fieldset>
-                <legend>Resume</legend>
-                <h3>Personal details</h3>
-                <p>Name:A.Bhavani<br>DOB:21/04/2005<br>Email id:advalabhavani00@gmail.com<br>Mobile number:6301440122</p>
-                <h3>Education</h3>
+                <div class="box">
+                <legend><center><h3>Resume</h3></center></legend>
+                <h3 id="main-tile">Personal details</h3>
+                <p class="note">Name:A.Bhavani<br>DOB:21/04/2005<br>Email id:advalabhavani00@gmail.com<br>Mobile number:6301440122</p>
+                <h3 style="color:blue(226,32,121)">Education</h3>
                 <table border="1">
                     <tr>
                         <th>Class</th>
@@ -56,6 +78,7 @@
                 <h3>Languages</h3>
                 <p>Telugu<br>English<br>Hindi</p>
             </fieldset>
+            </div>
         </body>
     </head>
 </html>

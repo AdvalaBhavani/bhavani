@@ -1,0 +1,23 @@
+p{
+    width: 200px;
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    color: black;
+    background: linear-gradient(90deg, rgb(175, 59, 78));
+    margin: 10px;
+    display:inline-block;
+    background-image:url("https://pngtree.com/freebackground/abstract-blue-orange-background-with-smooth-gradient_15505675.html");
+}
+h2{
+    width:100px;
+    border:5px solid black;
+    border-radius: 10px;
+    background: linear-gradient(90deg,rgb(175, 59, 78));
+}
+div{
+    border:1px solid black;
+    border-radius: 10px;
+    display:inline-block;
+    background-image:url("https://pngtree.com/freebackground/blue-gradient-abstract-business-card-background-vector_15486795.html");
+}
