@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Pseudo classes</title>
+        <style>
+            button:hover{
+                background-color: skyblue;
+            }
+            button:active{
+                background-color: pink;
+            }
+            li:nth-child(2){
+                color:aqua;
+            
+            }
+            p:first-child{
+                color:bisque;
+            }
+                
+            li:last-child{
+                color:blue;
+            }
+
+            div:not(#id){
+                background-color:rgb(210,133,33);
+                padding:5px;
+                margin:5px;
+            }
+        </style>
+        </head>
+        <body>
+            <button>onclick or hover</button>
+            <div>
+                <p>This are the alphabets</p>
+             </div>
+             <ol>
+                <li>apple</li>
+                <li>banana</li>
+                <li>cat</li>
+                <li>dog</li>
+             </ol>
+             <div>egg</div>
+             <div id="id">fish</div>
+             <div>goat</div>
+          
+        </body>
+</html>

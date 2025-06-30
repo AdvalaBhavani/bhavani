@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>Registration form</head>
+    <style>
+        .box{
+            margin:20px;
+            border:5px solid black;
+            /* border-radius:0px 0px 10px; */
+            border-top-left-radius: 20px;
+            padding:15px;
+            max-width: 170px;
+            background-color: rgb(156,130,69);
+            background-image:url("data:image/jpeg;base64,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");
+        }
+    </style>
+    <body>
+        <div class=box>
+            <h2>Registration form</h2>
+            <label for="123">Name:</label><br>
+            <input type="text" placeholder ="Enter your Name" id="124"><br><br>
+            <label for="123">Last Name:</label><br>
+            <input type="text" placeholder ="Enter your Last Name" id="123"><br><br>
+            <label for="124"> Personal Email:</label><br>
+            <input type="text" placeholder ="Enter your personal Email" id="124"><br><br>
+            <label for="125">password:</label><br>
+            <input type="text" placeholder ="Enter your personal Email" id="125"><br><br>
+            <label for="126">Gender:</label><br>
+            <input type="radio" value="126">male
+            <input type="radio" value="126">female<br><br>
+            <label for="127">Date of Birth</label><br>
+            <input type="text"placeholder="Enter your date of birth" id="127"><br><br>
+            <label for ="128" >Course</label><br>
+            <input type="radio" value="128">CSE
+            <input type="radio" value="129">IT<br><br>
+            <label for="130">Country</label>
+            <select>
+                <option value="india">India</option>
+                <option value="usa">USA</option>
+                <option value="uk">UK</option>
+            </select><br><br>
+            <label for ="131">State</label>
+            <select>
+                <option value="telangana">Telangana</option>
+                <option value="andhra pradesh">Andhra Pradesh</option>
+                <option value="karnataka">Karnataka</option>
+
+            </select><br><br>
+            
+            
+        </div>
+    </body>
+</html>

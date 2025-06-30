@@ -1,0 +1,17 @@
+<html>
+<head>
+    <script>
+        function change() {
+            document.getElementById("p1").innerText = "Hello World"; 
+            document.getElementById("box").style.backgroundColor = "aqua";  
+            document.getElementsByTagName("p")[1].style.color = "blue";  
+        }
+    </script>
+</head>
+<body>
+    <button onclick="change()">change</button>
+    <p id="p1"></p>
+    <div id="box">this is div</div>
+    <p>this is text</p>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function saveData() {
+            let username = document.getElementById("uname").value;
+            let email = document.getElementById("email").value;
+
+            localStorage.setItem("username", username);
+            localStorage.setItem("email", email);
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="uname" placeholder="Enter username">
+    <input type="email" id="email" placeholder="Enter email">
+    <button onclick="saveData()">Save</button>
+</body>
+</html>
