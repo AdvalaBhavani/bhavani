@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Promise Example</title>
+</head>
+<body>
+    <script>
+        const fetchData = new Promise((resolve, reject) => {
+            let success = true;
+            setTimeout(() => {
+                if (success) resolve("data fetched successfully");
+                else reject("Error occurred");
+            }, 2000);
+        });
+
+        console.log(fetchData);
+
+        fetchData
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+    </script>
+</body>
+</html>

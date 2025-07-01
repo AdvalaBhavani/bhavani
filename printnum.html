@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Print Numbers 1 to 5</title>
+</head>
+<body>
+  <div id="output"></div>
+
+  <script>
+    function printNumbers() {
+      const outputDiv = document.getElementById('output');
+      let number = 1;
+      const intervalId = setInterval(() => {
+        outputDiv.innerHTML += number + '<br>';
+        if (number === 5) {
+          clearInterval(intervalId);
+        }
+        number++;
+      }, 1000);
+    }
+
+    printNumbers();
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Promise</title></head>
+<body>
+
+<div id="msg"></div>
+
+<script>
+  window.onload = function() {
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve("Hello this is a delayed message");
+      }, 2000);
+    }).then(message => {
+      document.getElementById("msg").textContent = message;
+    });
+  };
+</script>
+
+</body>
+</html>

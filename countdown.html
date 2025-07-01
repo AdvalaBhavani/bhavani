@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Countdown Timer</title>
+  <style>
+    #timer {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="timer">10</div>
+
+  <script>
+    let count = 10;
+    const timerDiv = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+      count--;
+      timerDiv.textContent = count;
+
+      if (count <= 0) {
+        clearInterval(countdown);
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
