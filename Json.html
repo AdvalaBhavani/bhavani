@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Json</title>
+        <body>
+            <script>
+                let obj1={
+                    "key1":"MRU",
+                    "key2":"University"
+                };
+
+                //read by using "." dot operator
+                document.write(obj1.key1, obj1.key2,'<br>');
+
+                //read by using "[]" operator
+                document.write(obj1["key1"],obj1["key2"],'<br>');
+
+                //read by using Destructing...
+                let {key1,key2}=obj1;
+                document.write(key1,key2,"<br>");
+
+                //read by using for... in loop
+                for(let key in obj1){
+                    document.write(obj1[key])
+                }
+            </script>
+        </body>
+    </head>
+</html>

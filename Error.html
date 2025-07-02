@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Error</title>
+    </head>
+    <script>
+        try{
+            console.log("Start exeution");
+            let result = x * 5;
+            console.log("This line will not be executed");
+        }catch(error){
+            console.log("Caught an error:", error.message);
+        }finally{
+            console.log("This block runs no matter what");
+        }
+    </script>
+</html>

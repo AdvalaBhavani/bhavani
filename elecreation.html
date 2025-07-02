@@ -1,0 +1,55 @@
+<html lang="en">
+    <body>
+        <div id="container">
+            <h1>Original content</h1>
+        </div>
+        <button onclick="AddParagraph()">Add Paragraph</button><br><br>
+
+        <script>
+            function AddParagraph(){
+                const para = document.createElement("p");
+                para.innerText = "this is a new paragraph";
+                para.style.margin="10px";
+                para.style.border="1px solid red";
+                document.getElementById("container").appendChild(para);
+
+                const image=document.createElement("img");
+                image.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZxNlNCn2u2g7TLL3v_5nu2TTUIMBBLdzs_MtRFtU4lxHcPeAk8Qo1KtA&s";
+                image.alt="simple image";
+                image.style.margin="10px";
+                image.style.width="150px";
+                document.getElementById("container").appendChild(image);
+
+            }
+        </script>
+    </body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Name List</title>
+    <script>
+        function AddName() {
+            const input = document.getElementById("name");
+            const name = input.value.trim();  
+            if (name) {
+                let li = document.createElement("li");
+                li.textContent = name;
+                document.getElementById("list").appendChild(li);
+                input.value = ""; 
+                input.focus();
+            } else {
+                alert("Please enter a student name.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <label for="name">Student Name</label>
+    <input type="text" id="name"><br>
+    <button onclick="AddName()">Add Name</button>
+    <ul id="list"></ul>
+</body>
+</html>
