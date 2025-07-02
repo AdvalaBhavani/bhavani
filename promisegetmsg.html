@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Promise getMessage</title>
+</head>
+<body>
+  <div id="output"></div> <!-- Added this line -->
+
+  <script>
+    function getMessage() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("Hello from Promise");
+        }, 2000);
+      });
+    }
+
+    async function printMessage() {
+      const message = await getMessage();
+      console.log(message); 
+      document.getElementById('output').textContent = message; 
+    }
+
+    printMessage();
+  </script>
+</body>
+</html>
+
+<html>
+<head></head>
+<body>
+  <script>
+    function getUser() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("user fetched");
+        }, 1000);
+      });
+    }
+
+    function getPosts() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("posts fetched");
+        }, 2000);
+      });
+    }
+
+    let consume = async () => {
+      let res = await getUser();
+      document.write(res, '<br>'); // Use res, not res1
+
+      let res1 = await getPosts();
+      document.write(res1, '<br>');
+    }
+
+    consume();
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <body>
+            //keydown Event:
+            <input type="text" id="myInput" placeholder="Type something">
+        <script>
+            document.getElementById("myInput").addEventListener("keydown", function(){
+                document.write("key is being pressed");
+            });
+        </script>
+
+
+           //Submit Event...
+
+ <form id="myform">
+        <input type="text" placeholder="Enter name" required />
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("myform").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("Form submitted");
+        });
+    </script>
+</body>
+</html>

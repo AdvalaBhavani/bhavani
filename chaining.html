@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Chaining</title>
+    </head>
+    <body>
+        <script>
+            let user ={
+                name:"Mallareddy",
+                greet(){
+                    console.log("Hello"+this.name);
+                    return this;
+                },
+
+                sayBye(){
+                    console.log("GoodBye"+this.name);
+                    return this;
+                }
+            };
+            user.greet().sayBye();
+        </script>
+    </body>
+</html>
