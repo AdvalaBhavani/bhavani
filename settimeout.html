@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            document.write("start");
+            setTimeout(()=>{
+                document.write("Executed after 3 seconds:");
+            },3000);
+        document.write("End");
+        </script>
+        </body>
+        </html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let count = 0;
+        let id = setInterval(() => {
+            count++;
+            document.write("Repeat MR University " + count + "<br>");
+            if (count === 10) clearInterval(id);
+        }, 2000);
+    </script>
+</body>
+</html>
+
+        
