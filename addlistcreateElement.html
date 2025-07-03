@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>User Info Display</title>
+    </head>
+    <body>
+     <title>Display User Info</title>
+</head>
+<body>
+
+  <div id="output"></div>
+
+  <script>
+    // Read inputs from user using prompt
+    const username = prompt("Enter your username:");
+    const email = prompt("Enter your email:");
+    const mobile = prompt("Enter your mobile number:");
+
+    // Get the container div
+    const outputDiv = document.getElementById("output");
+
+    // Create paragraph elements for each input
+    const usernameP = document.createElement("p");
+    usernameP.textContent = "Username: " + username;
+
+    const emailP = document.createElement("p");
+    emailP.textContent = "Email: " + email;
+
+    const mobileP = document.createElement("p");
+    mobileP.textContent = "Mobile Number: " + mobile;
+
+    // Append paragraphs to output div
+    outputDiv.appendChild(usernameP);
+    outputDiv.appendChild(emailP);
+    outputDiv.appendChild(mobileP);
+  </script>
+
+</body>
+</html>
