@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <ul id="ul"></ul>
+        <button onclick="add()">add</button>
+        <script>
+            function add(){
+                const ul=document.getElementById("ul");
+                const li=document.createElement("li");
+                li.innerText="element added"
+                ul.appendChild(li);
+            }
+        </script>
+    </body>
+</html>
