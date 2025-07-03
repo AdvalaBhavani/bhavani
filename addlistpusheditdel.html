@@ -1,8 +1,98 @@
 <html>
-  <head></head>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f7fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        color: #333;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        width: 250px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-right: 10px;
+        transition: border-color 0.3s;
+      }
+
+      input[type="text"]:focus {
+        border-color: #3b82f6;
+        outline: none;
+      }
+
+      button {
+        background-color: #3b82f6;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #2563eb;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+        width: 320px;
+      }
+
+      li {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      }
+
+      li p {
+        margin: 0;
+        flex: 1;
+        word-break: break-word;
+      }
+
+      li button {
+        margin-left: 8px;
+        padding: 6px 10px;
+        font-size: 14px;
+        border-radius: 4px;
+      }
+
+      li button:nth-child(2) { /* edit button */
+        background-color: #facc15;
+        color: #92400e;
+      }
+      li button:nth-child(2):hover {
+        background-color: #f59e0b;
+      }
+
+      li button:nth-child(3) { /* delete button */
+        background-color: #ef4444;
+        color: white;
+      }
+      li button:nth-child(3):hover {
+        background-color: #b91c1c;
+      }
+    </style>
+  </head>
   <body>
-    <input type="text" id="inp" />
-    <button onclick="add()">add</button>
+    <input type="text" id="inp" placeholder="Add a new task" />
+    <button onclick="add()">Add</button>
     <ul id="ul"></ul>
 
     <script>
@@ -27,7 +117,7 @@
           li.innerHTML = `
             <p>${task}</p>
             <button onclick="edit(${index})">edit</button>
-            <button onclick="del(${index})">delete</button>
+            <button onclick="deleteTask(${index})">delete</button>
           `;
 
           ul.appendChild(li);
@@ -35,14 +125,17 @@
       }
 
       function deleteTask(index){
-        tasks.split(index,1);
-        display()
-      }
-      function edit(index){
-        const newtask=prompt("edit task",task[index]);
-        tasks[index]=newtask;
+        tasks.splice(index, 1);
         display();
+      }
+
+      function edit(index){
+        const newtask = prompt("edit task", tasks[index]);
+        if(newtask !== null && newtask.trim() !== ""){
+          tasks[index] = newtask.trim();
+          display();
+        }
       }
     </script>
   </body>
-</html> 
+</html>
