@@ -1,0 +1,48 @@
+<html>
+  <head></head>
+  <body>
+    <input type="text" id="inp" />
+    <button onclick="add()">add</button>
+    <ul id="ul"></ul>
+
+    <script>
+      let tasks = []; 
+
+      function add() {
+        const inp = document.getElementById("inp");
+        if (inp.value.trim() === "") return; 
+        tasks.push(inp.value);
+        inp.value = "";
+        display();
+        console.log(tasks);
+      }
+
+      function display() {
+        const ul = document.getElementById("ul");
+        ul.innerHTML = ""; 
+
+        tasks.forEach((task, index) => {
+          const li = document.createElement("li");
+
+          li.innerHTML = `
+            <p>${task}</p>
+            <button onclick="edit(${index})">edit</button>
+            <button onclick="del(${index})">delete</button>
+          `;
+
+          ul.appendChild(li);
+        });
+      }
+
+      function deleteTask(index){
+        tasks.split(index,1);
+        display()
+      }
+      function edit(index){
+        const newtask=prompt("edit task",task[index]);
+        tasks[index]=newtask;
+        display();
+      }
+    </script>
+  </body>
+</html> 
