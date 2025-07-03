@@ -2,14 +2,17 @@
 <html>
     <head></head>
     <body>
+        <input type="text" id="inp">
         <ul id="ul"></ul>
         <button onclick="add()">add</button>
         <script>
             function add(){
                 const ul=document.getElementById("ul");
                 const li=document.createElement("li");
-                li.innerText="element added"
+                const inp=document.getElementById("inp")
+                li.innerText=inp.value
                 ul.appendChild(li);
+                inp.value=""
             }
         </script>
     </body>
