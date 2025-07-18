@@ -1,39 +1,40 @@
 <!DOCTYPE html>
-<html lang="eng">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <script>
-            document.write("start");
-            setTimeout(()=>{
-                document.write("Executed after 3 seconds:");
-            },3000);
-        document.write("End");
-        </script>
-        </body>
-        </html>
-
-
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Scheduled Message Timer</title>
 </head>
 <body>
+    <p id="timer">10</p>
+    <p id="datetime"></p>
+    <p id="message"></p>
+
     <script>
-        let count = 0;
-        let id = setInterval(() => {
-            count++;
-            document.write("Repeat MR University " + count + "<br>");
-            if (count === 10) clearInterval(id);
-        }, 2000);
+        let count = 10; 
+        const timerDisplay = document.getElementById("timer");
+        const dateTimeDisplay = document.getElementById("datetime");
+        const messageDisplay = document.getElementById("message");
+
+        function updateDateTime() {
+            const now = new Date();
+            const formatted = now.toLocaleString();
+            dateTimeDisplay.innerHTML = `Current Date & Time: ${formatted}`;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        const intervalId = setInterval(() => {
+            timerDisplay.innerHTML = count;
+            count--;
+
+            if (count < 0) {
+                clearInterval(intervalId);
+                timerDisplay.innerHTML = "0";
+                const now = new Date().toLocaleTimeString();
+                messageDisplay.innerHTML = `Scheduled Message: "Time's up!" at ${now}`;
+                window.alert("Time's up!");
+            }
+        }, 1000);
     </script>
 </body>
 </html>
-
-        

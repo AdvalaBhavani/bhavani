@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Card Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #26afd1;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    #cardsContainer {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      width: 250px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.5s ease-in-out;
+      transition: background 0.3s;
+    }
+
+    .card.light {
+      background: #fff;
+      color: #000;
+    }
+
+    .card.dark {
+      background: #333;
+      color: #fff;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .square {
+      border-radius: 0;
+    }
+
+    .rounded {
+      border-radius: 10px;
+    }
+
+    .circle {
+      border-radius: 50%;
+    }
+
+    .card button {
+      margin-top: 10px;
+      padding: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Profile Card Generator</h1>
+    <form id="profileForm">
+      <input type="text" id="name" placeholder="Enter your name" required />
+      <textarea id="bio" placeholder="Enter a short bio" required></textarea>
+      <input type="file" id="imageUpload" accept="image/*" required />
+      <select id="borderStyle">
+        <option value="Select shape">Select shape</option>
+        <option value="square">Square</option>
+        <option value="rounded">Rounded</option>
+        <option value="circle">Circle</option>
+      </select>
+      <button type="button" id="previewBtn">Preview</button>
+      <button type="submit">Generate Card</button>
+    </form>
+
+    <div id="previewArea"></div>
+    <div id="cardsContainer"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("profileForm");
+    const previewBtn = document.getElementById("previewBtn");
+    const previewArea = document.getElementById("previewArea");
+    const cardsContainer = document.getElementById("cardsContainer");
+
+    let cards = JSON.parse(localStorage.getItem("profileCards")) || [];
+
+    function renderCard(cardData, index) {
+      const card = document.createElement("div");
+      card.className = `card ${cardData.theme}`;
+      card.innerHTML = `
+    <img src="${cardData.image}" class="${cardData.border}" />
+    <h3>${cardData.name}</h3>
+    <p>${cardData.bio}</p>
+    <button onclick="toggleTheme(${index})">Toggle Theme</button>
+    <button onclick="editCard(${index})">Edit</button>
+    <button onclick="deleteCard(${index})">Delete</button>
+  `;
+      cardsContainer.appendChild(card);
+    }
+
+    function saveCards() {
+      localStorage.setItem("profileCards", JSON.stringify(cards));
+    }
+
+    function loadCards() {
+      cardsContainer.innerHTML = "";
+      cards.forEach((card, index) => renderCard(card, index));
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const bio = document.getElementById("bio").value;
+      const border = document.getElementById("borderStyle").value;
+      const imageFile = document.getElementById("imageUpload").files[0];
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const image = reader.result;
+        const cardData = { name, bio, image, border, theme: "light" };
+        cards.push(cardData);
+        saveCards();
+        loadCards();
+        form.reset();
+        previewArea.innerHTML = "";
+      };
+      reader.readAsDataURL(imageFile);
+    });
+
+    previewBtn.addEventListener("click", () => {
+      const name = document.getElementById("name").value;
+      const bio = document.getElementById("bio").value;
+      const border = document.getElementById("borderStyle").value;
+      const imageFile = document.getElementById("imageUpload").files[0];
+
+      if (!imageFile) return;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        previewArea.innerHTML = `
+      <div class="card light">
+        <img src="${reader.result}" class="${border}" />
+        <h3>${name}</h3>
+        <p>${bio}</p>
+      </div>
+    `;
+      };
+      reader.readAsDataURL(imageFile);
+    });
+
+    window.toggleTheme = function (index) {
+      cards[index].theme = cards[index].theme === "light" ? "dark" : "light";
+      saveCards();
+      loadCards();
+    };
+
+    window.deleteCard = function (index) {
+      cards.splice(index, 1);
+      saveCards();
+      loadCards();
+    };
+
+    window.editCard = function (index) {
+      const card = cards[index];
+      document.getElementById("name").value = card.name;
+      document.getElementById("bio").value = card.bio;
+      document.getElementById("borderStyle").value = card.border;
+      previewArea.innerHTML = `
+    <div class="card ${card.theme}">
+      <img src="${card.image}" class="${card.border}" />
+      <h3>${card.name}</h3>
+      <p>${card.bio}</p>
+    </div>
+  `;
+      cards.splice(index, 1);
+      saveCards();
+      loadCards();
+    };
+
+    loadCards();
+  </script>
+</body>
+
+</html>
